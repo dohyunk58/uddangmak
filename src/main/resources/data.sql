@@ -1,0 +1,51 @@
+CREATE TABLE IF NOT EXISTS device_settings (
+    device_id VARCHAR(255) PRIMARY KEY,
+    power_on BOOLEAN,
+    fan_speed INT,
+    fan_rotation BOOLEAN,
+    moodlight_brightness INT,
+    moodlight_color VARCHAR(255),
+    alarm_enabled BOOLEAN,
+    alarm_time TIME,
+    sleep_mode_enabled BOOLEAN,
+    sleep_mode_begin_time TIME,
+    sleep_mode_end_time TIME,
+    sleep_mode_speed INT,
+    sleep_mode_brightness INT,
+    sleep_mode_color VARCHAR(255),
+    last_updated_at TIMESTAMP
+);
+
+INSERT INTO device_settings (
+    device_id,
+    power_on,
+    fan_speed,
+    fan_rotation,
+    moodlight_brightness,
+    moodlight_color,
+    alarm_enabled,
+    alarm_time,
+    sleep_mode_enabled,
+    sleep_mode_begin_time,
+    sleep_mode_end_time,
+    sleep_mode_speed,
+    sleep_mode_brightness,
+    sleep_mode_color,
+    last_updated_at
+) VALUES (
+    'ARDUINO_FAN_001',
+    TRUE,
+    0,
+    FALSE,
+    128,
+    '0,0,0',
+    FALSE,
+    NULL,
+    FALSE,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '2025-07-07 10:00:00'
+ );
