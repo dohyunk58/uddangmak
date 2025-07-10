@@ -34,10 +34,10 @@ INSERT INTO device_settings (
     last_updated_at
 ) VALUES (
     'ARDUINO_FAN_001',
-    TRUE,
+    FALSE,
     0,
     FALSE,
-    128,
+    0,
     '0,0,0',
     FALSE,
     NULL,
@@ -47,5 +47,5 @@ INSERT INTO device_settings (
     NULL,
     NULL,
     NULL,
-    '2025-07-07 10:00:00'
+    '2025-07-08 14:50:00'
  );
