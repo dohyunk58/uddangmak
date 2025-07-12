@@ -1,9 +1,16 @@
-# OpenJDK temurin 21
+FROM eclipse-temurin:21 AS builder
+
+WORKDIR /app
+
+COPY . .
+
+RUN chmod +x ./gradlew && ./gradlew bootJar
+
 FROM eclipse-temurin:21-jre-jammy
 
 WORKDIR /app
 
-COPY build/libs/*.jar app.jar
+COPY --from=builder /app/build/libs/*.jar app.jar
 
 EXPOSE 8080
 
