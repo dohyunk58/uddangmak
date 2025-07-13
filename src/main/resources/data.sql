@@ -1,23 +1,31 @@
 CREATE TABLE IF NOT EXISTS device_settings (
-    device_id VARCHAR(255) PRIMARY KEY,
-    power_on BOOLEAN,
-    fan_speed INT,
-    fan_rotation BOOLEAN,
-    moodlight_brightness INT,
-    moodlight_color VARCHAR(255),
-    alarm_enabled BOOLEAN,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    power_on BOOLEAN NOT NULL DEFAULT FALSE,
+    fan_speed INT NOT NULL  DEFAULT 0,
+    fan_rotation BOOLEAN NOT NULL  DEFAULT FALSE,
+    moodlight_brightness INT NOT NULL DEFAULT 0,
+    moodlight_color VARCHAR(255) NOT NULL DEFAULT '0,0,0',
+    alarm_enabled BOOLEAN NOT NULL DEFAULT FALSE,
     alarm_time TIME,
-    sleep_mode_enabled BOOLEAN,
+    sleep_mode_enabled BOOLEAN NOT NULL DEFAULT FALSE,
     sleep_mode_begin_time TIME,
     sleep_mode_end_time TIME,
     sleep_mode_speed INT,
     sleep_mode_brightness INT,
     sleep_mode_color VARCHAR(255),
-    last_updated_at TIMESTAMP
+    last_updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS sensor_data (
+    id INT PRIMARY KEY,
+    temp REAL NOT NULL DEFAULT 0.0,
+    humid REAL NOT NULL DEFAULT 0.0,
+    brightness INT NOT NULL DEFAULT 0,
+    last_updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO device_settings (
-    device_id,
+    id,
     power_on,
     fan_speed,
     fan_rotation,
@@ -30,10 +38,9 @@ INSERT INTO device_settings (
     sleep_mode_end_time,
     sleep_mode_speed,
     sleep_mode_brightness,
-    sleep_mode_color,
-    last_updated_at
+    sleep_mode_color
 ) VALUES (
-    'ARDUINO_FAN_001',
+    1,
     FALSE,
     0,
     FALSE,
@@ -46,6 +53,17 @@ INSERT INTO device_settings (
     NULL,
     NULL,
     NULL,
-    NULL,
-    '2025-07-08 14:50:00'
- );
+    NULL
+);
+
+INSERT INTO sensor_data (
+    id,
+    temp,
+    humid,
+    brightness
+) VALUES (
+    1,
+    0.0,
+    0.0,
+    0
+);

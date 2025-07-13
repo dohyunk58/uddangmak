@@ -1,6 +1,7 @@
 package com.uddangmak.smartfan.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,13 +14,11 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class DeviceSettings {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "device_id", nullable = false, length = 255)
-    private String deviceId;
 
     @Column(name = "power_on", nullable = false)
     private boolean powerOn;
@@ -62,4 +61,14 @@ public class DeviceSettings {
 
     @Column(name = "last_updated_at", nullable = false)
     private LocalDateTime lastUpdatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.lastUpdatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.lastUpdatedAt = LocalDateTime.now();
+    }
 }
