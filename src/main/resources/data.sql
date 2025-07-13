@@ -47,13 +47,13 @@ INSERT INTO device_settings (
     0,
     '0,0,0',
     FALSE,
-    NULL,
+    '00:00:00',
     FALSE,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
+    '00:00:00',
+    '00:00:00',
+    0,
+    0,
+    '0,0,0'
 );
 
 INSERT INTO sensor_data (
